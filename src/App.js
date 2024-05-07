@@ -1,23 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import { Canvas } from "@react-three/fiber";
+import { Splat, OrbitControls } from "@react-three/drei";
 
 function App() {
+  const url = `https://gaussian-splatting-production.s3.ap-south-1.amazonaws.com/jewel26_lr/jewel26_lr.splat`;
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ width: '100vw', height: '100vh' }}>
+      <Canvas
+        camera={{ position: [3, 0.5, 3.5] }}
+      >
+        <Splat  src={url} />
+        <OrbitControls />
+      </Canvas>
     </div>
   );
 }
